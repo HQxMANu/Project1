@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\Property;
 use Illuminate\Support\Facades\Storage;
 
-class ClientController extends Controller
+class PropertyController extends Controller
 {
     public function create()
     {
-        return view('clients.create');
+        return view('properties.create');
     }
 
     public function store(Request $request)
@@ -30,7 +30,7 @@ class ClientController extends Controller
             $housePhotoPath = $request->file('house_photo')->store('house_photos', 'public');
         }
 
-        Client::create([
+        Property::create([
             'property_title' => $request->property_title,
             'description' => $request->description,
             'number_of_rooms' => $request->number_of_rooms,
@@ -41,12 +41,13 @@ class ClientController extends Controller
             'house_photo' => $housePhotoPath ?? null,
         ]);
 
-        return redirect()->route('clients.create')->with('success', 'Client added successfully');
+        return redirect()->route('properties.create')->with('success', 'Property added successfully');
     }
+
     public function show($id)
     {
-        $client = Client::findOrFail($id);
-        return view('clients.show', compact('client'));
+        $property = Property::findOrFail($id);
+        return view('properties.show', compact('property'));
     }
 }
 

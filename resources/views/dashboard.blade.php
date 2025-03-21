@@ -6,25 +6,25 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1>Properties</h1>
-                <a href="{{ url('/clients/add') }}" class="btn btn-primary">+ Create Property</a>
+                <a href="{{ url('/properties/add') }}" class="btn btn-primary">+ Create Property</a>
             </div>
            
-            <div class="clients-container mt-4">
-                @if(isset($clients) && count($clients) > 0)
+            <div class="properties-container mt-4">
+                @if(isset($properties) && count($properties) > 0)
                 <div class="row">
-                    @foreach($clients as $client)
+                    @foreach($properties as $property)
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <div class="card-body text-center">
-                                @if($client->house_photo)
-                                <img src="{{ asset('storage/' . $client->house_photo) }}" alt="{{ $client->property_title }}" class="img-fluid mb-3" style="max-height: 200px;">
+                                @if($property->house_photo)
+                                <img src="{{ asset('storage/' . $property->house_photo) }}" alt="{{ $property->property_title }}" class="img-fluid mb-3" style="max-height: 200px;">
                                 @else
                                 <div class="no-photo bg-light p-4 mb-3">No Photo Available</div>
                                 @endif
-                                <h4 class="card-title">{{ $client->property_title }}</h4>
-                                <p class="card-text">{{ $client->location }}</p>
-                                <p class="card-text">${{ number_format($client->price, 2) }}</p>
-                                <a href="{{ route('clients.show', $client->id) }}" class="btn btn-primary">View Property</a>
+                                <h4 class="card-title">{{ $property->property_title }}</h4>
+                                <p class="card-text">{{ $property->location }}</p>
+                                <p class="card-text">${{ number_format($property->price, 2) }}</p>
+                                <a href="{{ route('properties.show', $property->id) }}" class="btn btn-primary">View Property</a>
                             </div>
                         </div>
                     </div>

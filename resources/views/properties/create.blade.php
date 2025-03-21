@@ -18,7 +18,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('clients.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('properties.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
@@ -52,8 +52,6 @@
                                 <option value="" disabled selected>Select property type</option>
                                 <option value="House" {{ old('property_type') == 'House' ? 'selected' : '' }}>House</option>
                                 <option value="Apartment" {{ old('property_type') == 'Apartment' ? 'selected' : '' }}>Apartment</option>
-                                <option value="Condo" {{ old('property_type') == 'Condo' ? 'selected' : '' }}>Condo</option>
-                                <option value="Townhouse" {{ old('property_type') == 'Townhouse' ? 'selected' : '' }}>Townhouse</option>
                             </select>
                         </div>
 

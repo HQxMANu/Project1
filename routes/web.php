@@ -3,17 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClientController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\PropertyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,7 +14,6 @@ Route::get('/about', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-
 
 // Create additional Routes below
 Route::get('/login', [AuthController::class, 'create'])->name('login');
@@ -39,8 +28,8 @@ Route::post('/logout', function () {
 })->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/clients/add', [ClientController::class, 'create'])->name('clients.create');
-    Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+    Route::get('/properties/add', [PropertyController::class, 'create'])->name('properties.create');
+    Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 });
 
-Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
+Route::get('/properties/{id}', [PropertyController::class, 'show'])->name('properties.show');
